@@ -15,12 +15,16 @@
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
+        "resolve-url-loader": "^4.0.0",
+        "sass": "^1.36.0",
+        "sass-loader": "^12.1.0",
         "vue-loader": "^16.3.3"
     },
     "dependencies": {
         "@inertiajs/inertia": "^0.10.0",
         "@inertiajs/inertia-vue3": "^0.5.1",
         "@inertiajs/progress": "^0.2.6",
+        "element-plus": "^1.0.2-beta.63",
         "vue": "^3.1.5"
     }
 }
