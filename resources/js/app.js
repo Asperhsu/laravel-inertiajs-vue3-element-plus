@@ -15,11 +15,11 @@ createInertiaApp({
         return page;
     },
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
-            .use(plugin)
-            .use(ElementPlus)
-            .mixin({ methods: { ziggy: window.route } })
-            .component('Link', Link)
-            .mount(el);
+        const app = createApp({ render: () => h(App, props) });
+        app.use(plugin);
+        app.use(ElementPlus);
+        app.config.globalProperties.$route = window.route;
+        app.component('Link', Link);
+        app.mount(el);;
     },
 })
