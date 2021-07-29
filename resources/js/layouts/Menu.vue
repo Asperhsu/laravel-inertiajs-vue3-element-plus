@@ -1,5 +1,5 @@
 <template>
-    <el-menu background-color="transparent" text-color="#fff" :default-active="$route().current()">
+    <el-menu background-color="transparent" text-color="#fff">
         <el-menu-item index="dashboard">
             <i class="el-icon-menu"></i>
             <Link :href="$route('dashboard')">Dashboard</Link>
@@ -7,7 +7,7 @@
 
         <el-menu-item index="organizations">
             <i class="el-icon-document"></i>
-            <Link :href="$route('organizations')">Organizations</Link>
+            <Link :href="$route('organizations.index')">Organizations</Link>
         </el-menu-item>
 
         <el-menu-item index="contacts">
@@ -36,11 +36,16 @@
                 <el-menu-item index="1-2-1">选项1</el-menu-item>
             </el-submenu>
         </el-submenu>
+
+        <MenuActiveItemDetector />
     </el-menu>
 </template>
 
 <script>
+import MenuActiveItemDetector from './MenuActiveItemDetector.vue';
+
 export default {
     name: 'LayoutAsideMenu',
+    components: { MenuActiveItemDetector },
 }
 </script>
