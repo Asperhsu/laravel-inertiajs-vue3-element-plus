@@ -6,22 +6,18 @@
         </span>
         <template #dropdown>
             <el-dropdown-menu>
-                <el-dropdown-item @click="logoutForm.post($route('logout'))">Logout</el-dropdown-item>
+                <el-dropdown-item><Link :href="$route('logout')" method="post" as="span">Logout</Link></el-dropdown-item>
             </el-dropdown-menu>
         </template>
     </el-dropdown>
 </template>
 
 <script>
-import { useForm } from '@inertiajs/inertia-vue3'
-
 export default {
     name: 'LayoutHeaderUserDropdown',
 
     setup () {
-        const logoutForm = useForm();
-
-        return { logoutForm };
+        //
     },
 }
 </script>

@@ -2,13 +2,13 @@
 	<el-container class="layout-container">
 		<Aside />
 		<el-container class="flex-center layout-backtop">
-			<el-scrollbar ref="layoutDefaultsScrollbarRef">
+			<el-scrollbar>
 				<Header />
 
 				<el-main class="layout-main">
                     <el-scrollbar class="layout-scrollbar">
                         <div class="h100">
-                            <slot />
+                            <slot :key="$page.url" />
                         </div>
                     </el-scrollbar>
                 </el-main>

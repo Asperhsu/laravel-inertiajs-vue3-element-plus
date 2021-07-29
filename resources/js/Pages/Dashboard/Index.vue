@@ -13,8 +13,7 @@ export default {
     name: 'Dashboard',
 
     setup () {
-        const breadcrumbs = inject('breadcrumbs');
-        breadcrumbs.value = [{'title': 'xxx'}];
+        inject('breadcrumbs').value = [{'title': 'xxx'}];
     }
 }
 </script>
