@@ -1,6 +1,6 @@
 <template>
     <div class="layout-logo">
-        <Link class="mt-1" :href="ziggy('dashboard')">
+        <Link class="mt-1" :href="$route('dashboard')">
             <img src="/images/logo.svg" style="max-height: 30px;" />
         </Link>
 	</div>

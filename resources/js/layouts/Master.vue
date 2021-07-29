@@ -29,9 +29,11 @@ export default {
     components: { Aside, Header },
 
     setup () {
+        // isCollapse
         const isCollapse = ref(false);
         provide('isCollapse', isCollapse)
 
+        // clientWidth
         const clientWidth = ref(0);
         provide('clientWidth', clientWidth)
         const onLayoutResize = () => {
@@ -40,11 +42,14 @@ export default {
                 isCollapse.value = false;
             }
         };
-
         onBeforeMount(() => {
 			onLayoutResize();
 			window.addEventListener('resize', onLayoutResize);
 		});
+
+        // breadcrumb
+        const breadcrumbs = ref([]);
+        provide('breadcrumbs', breadcrumbs)
     },
 }
 </script>

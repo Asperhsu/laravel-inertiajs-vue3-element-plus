@@ -1,23 +1,23 @@
 <template>
-    <el-menu background-color="transparent" text-color="#fff" :default-active="ziggy().current()">
+    <el-menu background-color="transparent" text-color="#fff" :default-active="$route().current()">
         <el-menu-item index="dashboard">
             <i class="el-icon-menu"></i>
-            <Link :href="ziggy('dashboard')">Dashboard</Link>
+            <Link :href="$route('dashboard')">Dashboard</Link>
         </el-menu-item>
 
         <el-menu-item index="organizations">
             <i class="el-icon-document"></i>
-            <Link :href="ziggy('organizations')">Organizations</Link>
+            <Link :href="$route('organizations')">Organizations</Link>
         </el-menu-item>
 
         <el-menu-item index="contacts">
             <i class="el-icon-setting"></i>
-            <Link :href="ziggy('contacts')">Contacts</Link>
+            <Link :href="$route('contacts')">Contacts</Link>
         </el-menu-item>
 
         <el-menu-item index="reports">
             <i class="el-icon-setting"></i>
-            <Link :href="ziggy('reports')">Reports</Link>
+            <Link :href="$route('reports')">Reports</Link>
         </el-menu-item>
 
         <el-submenu index="1">
