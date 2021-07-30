@@ -7,7 +7,7 @@
             order: orderByAsc ? 'ascending' : 'descending'
         }"
         @sortChange="sortChange"
-        style="width: 100%" v-bind="$attrs">
+        v-bind="$attrs">
         <slot />
     </el-table>
 </template>

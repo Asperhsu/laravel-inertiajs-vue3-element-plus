@@ -3,7 +3,7 @@
         <title>Dashboard</title>
     </teleport>
 
-    <h3>{{ $route().current() }}</h3>
+    <h3>Dashboard</h3>
 </template>
 
 <script>
