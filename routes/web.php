@@ -16,7 +16,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [OrganizationsController::class, 'index'])->name('index');
         Route::get('/create', [OrganizationsController::class, 'create'])->name('create');
         Route::post('/', [OrganizationsController::class, 'store'])->name('store');
-        Route::post('/{organization}/edit', [OrganizationsController::class, 'edit'])->name('edit');
+        Route::get('/{organization}/edit', [OrganizationsController::class, 'edit'])->name('edit');
         Route::put('/{organization}', [OrganizationsController::class, 'update'])->name('update');
         Route::delete('/{organization}', [OrganizationsController::class, 'destroy'])->name('destroy');
     });

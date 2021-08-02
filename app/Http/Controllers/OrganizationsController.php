@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Organization;
 use Illuminate\Http\Request;
+use App\Models\Organization;
+use App\Http\Requests\OrganizationRequest;
 
 class OrganizationsController extends Controller
 {
@@ -20,5 +21,40 @@ class OrganizationsController extends Controller
                 ->paginate()
                 ->withQueryString(),
         ]);
+    }
+
+    public function create()
+    {
+        return inertia('Organizations/Create');
+    }
+
+    public function store(OrganizationRequest $request)
+    {
+        Organization::create($request->validated());
+
+        return redirect()->route('organizations.index')
+            ->with('success', 'Organization created.');
+    }
+
+    public function edit(Organization $organization)
+    {
+        return inertia('Organizations/Edit', [
+            'organization' => $organization,
+        ]);
+    }
+
+    public function update(OrganizationRequest $request, Organization $organization)
+    {
+        $organization->update($request->validated());
+
+        return redirect()->back()->with('success', 'Organization updated.');
+    }
+
+    public function destroy(Organization $organization)
+    {
+        $organization->delete();
+
+        return redirect()->route('organizations.index')
+            ->with('success', 'Organization deleted.');
     }
 }

@@ -20,15 +20,20 @@
 </template>
 
 <script>
+import { provide, ref, onBeforeMount, watch } from 'vue';
+import { ElNotification } from 'element-plus';
 import Aside from '@/layouts/Aside.vue';
 import Header from '@/layouts/Header.vue';
-import { provide, ref, onBeforeMount } from 'vue';
 
 export default {
     name: 'MasterLayout',
     components: { Aside, Header },
 
-    setup () {
+    props: {
+        flash: Object,
+    },
+
+    setup (props) {
         // isCollapse
         const isCollapse = ref(false);
         provide('isCollapse', isCollapse)
@@ -50,6 +55,14 @@ export default {
         // breadcrumb
         const breadcrumbs = ref([]);
         provide('breadcrumbs', breadcrumbs)
+
+        // flash messages
+        watch(() => props.flash.success, (message) => {
+            message && ElNotification({ type: 'success', message: message });
+        }, { immediate: true });
+        watch(() => props.flash.error, (message) => {
+            message && ElNotification({ type: 'error', message: message, duration: 0 });
+        }, { immediate: true });
     },
 }
 </script>
