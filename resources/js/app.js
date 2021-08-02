@@ -2,6 +2,7 @@ import { createApp, h } from 'vue';
 import { createInertiaApp, Link } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import ElementPlus from 'element-plus';
+import route from './helpers/route.js';
 import MasterLayout from '@/layouts/Master.vue';
 
 InertiaProgress.init();
@@ -16,7 +17,7 @@ createInertiaApp({
     },
     setup({ el, App, props, plugin }) {
         const app = createApp({ render: () => h(App, props) });
-        app.config.globalProperties.$route = window.route;
+        app.config.globalProperties.$route = route;
         app.use(plugin);
         app.use(ElementPlus);
         app.component('Link', Link);
