@@ -15,17 +15,22 @@
             <el-table-column prop="name" label="Name" sortable="custom"></el-table-column>
             <el-table-column prop="city" label="City"></el-table-column>
             <el-table-column prop="phone" label="Phone"></el-table-column>
-            <el-table-column label="操作">
-                <el-space #default="scope">
-                    <el-link type="primary" icon="el-icon-edit"
-                        @click.prevent="$inertia.get($route('organizations.edit', scope.row.id))">
-                        编辑
-                    </el-link>
-                    <el-link type="danger" icon="el-icon-delete"
-                        @click.prevent="destroy(scope.row.id)">
-                        刪除
-                    </el-link>
-                </el-space>
+            <el-table-column label="Actions">
+                <template #default="scope">
+                    <el-space>
+                        <el-link type="primary" icon="el-icon-edit"
+                            @click.prevent="$inertia.get($route('organizations.edit', scope.row.id))">
+                            Edit
+                        </el-link>
+
+                        <el-popconfirm title="Are you sure you want to delete this organization?"
+                            @confirm="$inertia.delete($route('organizations.destroy', scope.row.id))">
+                            <template #reference>
+                                <el-link type="danger" icon="el-icon-delete" @click.prevent="">Delete</el-link>
+                            </template>
+                        </el-popconfirm>
+                    </el-space>
+                </template>
             </el-table-column>
 
             <template #header-suffix>
@@ -41,7 +46,6 @@
 
 <script>
 import { inject } from 'vue';
-import { Inertia } from '@inertiajs/inertia';
 import SearchTable from '@/shared/SearchTable.vue';
 
 export default {
@@ -55,14 +59,6 @@ export default {
 
     setup (props) {
         inject('breadcrumbs').value = [{'title': 'Organizations'}];
-
-        const destroy = (id) => {
-            if (confirm('Are you sure you want to delete this organization?')) {
-                Inertia.delete(route('organizations.destroy', id))
-            }
-        };
-
-        return { destroy };
     },
 }
 </script>

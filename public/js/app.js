@@ -22946,15 +22946,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _shared_SearchTable_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/shared/SearchTable.vue */ "./resources/js/shared/SearchTable.vue");
-
+/* harmony import */ var _shared_SearchTable_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/shared/SearchTable.vue */ "./resources/js/shared/SearchTable.vue");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'OrganizationIndex',
   components: {
-    SearchTable: _shared_SearchTable_vue__WEBPACK_IMPORTED_MODULE_2__.default
+    SearchTable: _shared_SearchTable_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
   props: {
     filters: Object,
@@ -22964,16 +22962,6 @@ __webpack_require__.r(__webpack_exports__);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('breadcrumbs').value = [{
       'title': 'Organizations'
     }];
-
-    var destroy = function destroy(id) {
-      if (confirm('Are you sure you want to delete this organization?')) {
-        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.delete(route('organizations.destroy', id));
-      }
-    };
-
-    return {
-      destroy: destroy
-    };
   }
 });
 
@@ -24485,9 +24473,9 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 编辑 ");
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Edit ");
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 刪除 ");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Delete");
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create ");
 
@@ -24495,6 +24483,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_table_column = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-table-column");
 
   var _component_el_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-link");
+
+  var _component_el_popconfirm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-popconfirm");
 
   var _component_el_space = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-space");
 
@@ -24519,7 +24509,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             style: {
               "margin-left": "auto"
             },
-            onClick: _cache[1] || (_cache[1] = function ($event) {
+            onClick: _cache[2] || (_cache[2] = function ($event) {
               return _ctx.$inertia.get(_ctx.$route('organizations.create'));
             })
           }, {
@@ -24547,9 +24537,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_table_column, {
             label: "操作"
           }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (scope) {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_space, null, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (scope) {
+                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                   return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_link, {
                     type: "primary",
                     icon: "el-icon-edit",
@@ -24565,27 +24555,39 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
                   }, 1032
                   /* PROPS, DYNAMIC_SLOTS */
-                  , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_link, {
-                    type: "danger",
-                    icon: "el-icon-delete",
-                    onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-                      return $setup.destroy(scope.row.id);
-                    }, ["prevent"])
+                  , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_popconfirm, {
+                    title: "Are you sure you want to delete this organization?",
+                    onConfirm: function onConfirm($event) {
+                      return _ctx.$inertia["delete"](_ctx.$route('organizations.destroy', scope.row.id));
+                    }
                   }, {
-                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                      return [_hoisted_4];
+                    reference: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_link, {
+                        type: "danger",
+                        icon: "el-icon-delete",
+                        onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {}, ["prevent"]))
+                      }, {
+                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                          return [_hoisted_4];
+                        }),
+                        _: 1
+                        /* STABLE */
+
+                      })];
                     }),
                     _: 2
                     /* DYNAMIC */
 
                   }, 1032
                   /* PROPS, DYNAMIC_SLOTS */
-                  , ["onClick"])];
+                  , ["onConfirm"])];
                 }),
-                _: 1
-                /* STABLE */
+                _: 2
+                /* DYNAMIC */
 
-              })];
+              }, 1024
+              /* DYNAMIC_SLOTS */
+              )];
             }),
             _: 1
             /* STABLE */
